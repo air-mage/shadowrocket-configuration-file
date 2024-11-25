@@ -101,7 +101,7 @@ jobs:
       - name: Создаем конфиг sr_ru_public_lists.conf
         run: |
           cat ./conf.d/*.txt > ./conf.d/sr_ru_public_lists.conf
-          sed -i "1s/^/# @misha-tgshv, built on $(TZ="Europe/Moscow" date)\n/" ./conf.d/sr_ru_public_lists.conf
+          sed -i "1s/^/# @air-mage, built on $(TZ="Europe/Moscow" date)\n/" ./conf.d/sr_ru_public_lists.conf
 
       - name: Загружаем artifact
         uses: actions/upload-artifact@v4
