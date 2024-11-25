@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Создаем файл domain_custom.list
         run: |
-          curl -sSL https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/main/custom.list \
+          curl -sSL https://raw.githubusercontent.com/air-mage/shadowrocket-configuration-file/refs/heads/main/custom.list \
           | sed -E 's/^\+\./DOMAIN-SUFFIX,/; s/^[^D]/DOMAIN-SUFFIX,&/' > domain_custom.list
           sed -i "1s/^/DOMAIN-KEYWORD,instagram\n/" domain_custom.list
           
@@ -78,15 +78,15 @@ jobs:
           # Выборочные правила маршрутизации
           [Rule]
           # Список доменов автора
-          RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/release/rules/domain_custom.list,PROXY
+          RULE-SET,https://raw.githubusercontent.com/air-mage/shadowrocket-configuration-file/release/rules/domain_custom.list,PROXY
           # Список доменов Youtube
-          RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/release/rules/domain_youtube.list,PROXY
+          RULE-SET,https://raw.githubusercontent.com/air-mage/shadowrocket-configuration-file/release/rules/domain_youtube.list,PROXY
           # Список доменов Discrod
-          RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/release/rules/domain_discord.list,PROXY
+          RULE-SET,https://raw.githubusercontent.com/air-mage/shadowrocket-configuration-file/release/rules/domain_discord.list,PROXY
           # Список доменов antifilter
-          RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/release/rules/domain_antifilter.list,PROXY
+          RULE-SET,https://raw.githubusercontent.com/air-mage/shadowrocket-configuration-file/release/rules/domain_antifilter.list,PROXY
           # Список ip-адресов antifilter
-          RULE-SET,https://raw.githubusercontent.com/misha-tgshv/shadowrocket-configuration-file/release/rules/geoip_antifilter.list,PROXY,no-resolve
+          RULE-SET,https://raw.githubusercontent.com/air-mage/shadowrocket-configuration-file/release/rules/geoip_antifilter.list,PROXY,no-resolve
           
           # Финальное правило маршрутизации
           FINAL,DIRECT
@@ -101,7 +101,7 @@ jobs:
       - name: Создаем конфиг sr_ru_public_lists.conf
         run: |
           cat ./conf.d/*.txt > ./conf.d/sr_ru_public_lists.conf
-          sed -i "1s/^/# @misha-tgshv, built on $(TZ="Asia/Novokuznetsk" date)\n/" ./conf.d/sr_ru_public_lists.conf
+          sed -i "1s/^/# @misha-tgshv, built on $(TZ="Europe/Moscow" date)\n/" ./conf.d/sr_ru_public_lists.conf
 
       - name: Загружаем artifact
         uses: actions/upload-artifact@v4
@@ -116,8 +116,8 @@ jobs:
     steps:     
       - name: Настраиваем переменные
         run: |
-          echo "RELEASE_NAME=Built on $(TZ="Asia/Novokuznetsk" date +%Y%m%d%H%M)" >> $GITHUB_ENV
-          echo "TAG_NAME=$(TZ="Asia/Novokuznetsk" date +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "RELEASE_NAME=Built on $(TZ="Europe/Moscow" date +%Y%m%d%H%M)" >> $GITHUB_ENV
+          echo "TAG_NAME=$(TZ="Europe/Moscow" date +%Y%m%d%H%M)" >> $GITHUB_ENV
           mkdir -p rules
 
       - name: Скачиваем artifact 
