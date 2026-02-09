@@ -1,7 +1,7 @@
 # NAME: domains_community.list
 # AUTHOR: misha-tgshv
 # REPO: https://github.com/air-mage/shadowrocket-configuration-file
-# UPDATED: 2026-02-08 01:58:50 MSK
+# UPDATED: 2026-02-09 01:29:19 MSK
 # SOURCE: https://github.com/air-mage/shadowrocket-configuration-file/blob/main/community.list
 # special
 DOMAIN-KEYWORD,4pda
